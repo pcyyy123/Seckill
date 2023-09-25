@@ -163,7 +163,7 @@ public enum RespBeanEnum {
 #### 5.分布式Session问题
 
 由于 Nginx 使用默认负载均衡策略（轮询），请求将会按照时间顺序逐一分发到后端应用上。也就是说刚开始我们在 Tomcat1 登录之后，用户信息放在 Tomcat1 的 Session 里。过了一会，请求又被 Nginx 分发到了 Tomcat2 上，这时 Tomcat2 上 Session 里还没有用户信息，于是又要登录。
-<img src="HCS_img\1.png" alt="images" style="zoom:30%;" />
+<img src="HCS_img\1.png" alt="images" style="zoom:50%;" />
 
 基本解决方案：
 
