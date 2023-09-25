@@ -1,0 +1,95 @@
+spring:
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 3600
+      add-mappings: true
+      chain:
+        cache: true
+        enabled: true
+        compressed: true
+      static-locations: classpath:/static
+  # RabbitMQ
+  rabbitmq:
+    host: 127.0.0.1
+    username: guest
+    password: guest
+    # 虚拟主机
+    virtual-host: /
+    port: 5672
+    listener:
+      simple:
+        concurrency: 10
+        max-concurrency: 10
+        # 限制消费者每次只处理一条消息，处理完继续下一条
+        prefetch: 1
+        auto-startup: true
+        # 被拒绝时重新进入队列
+        default-requeue-rejected: true
+    template:
+      retry:
+        #发布重试，默认false
+        enabled: true
+        #重试时间，默认1000ms
+        initial-interval: 1000ms
+        #重试最大次数，默认3次
+        max-attempts: 3
+        #最大重试间隔时间
+        max-interval: 10000ms
+        #重试的间隔乘数，比如配2。0  第一等10s 第二次等20s 第三次等40s
+        multiplier: 1
+
+  thymeleaf:
+    cache: false
+    suffix: .html
+    encoding: UTF-8
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: 123456
+      database: 0
+      timeout: 10000ms
+      lettuce:
+        pool:
+          #最大连接数 默认8
+          max-active: 8
+          #最大连接阻塞时间
+          max-wait: 1000ms
+          #最大空闲连接，默认8
+          max-idle: 200
+  datasource:
+    # type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    hikari:
+      pool-name: DateHikariCP
+      # 最小空闲连接数
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 1800000
+      # 最大连接数，默认10
+      maximum-pool-size: 10
+      # 从连接池返回的连接自动提交
+      auto-commit: true
+      # 连接最大存活时间，0表示永久存活，默认1800000（30分钟）
+      max-lifetime: 1800000
+      # 连接超时时间，默认30000（30秒）
+      connection-timeout: 3000
+      # 测试连接是否可用的查询语句
+      connection-test-query: SELECT 1
+
+# Mybatis-plus配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  # 设置默认别名
+  type-aliases-package: com.example.pojo
+
+#Mybatis SQL打印（方法接口所在的包）
+logging:
+  level:
+    com.example.mapper: debug
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p><a th:href="@{/login/toLogin}"> 登录页面</a></p>
+<button id="refreshCaptcha">刷新验证码</button>
+<img id="captchaImage" src="/yzm/generate" alt="验证码">
+</body>
+<script>
+    document.getElementById('refreshCaptcha').addEventListener('click', function() {
+        // 获取验证码图片元素
+        var captchaImage = document.getElementById('captchaImage');
+
+        // 更新验证码图片的src属性，添加随机参数以确保每次请求都是新的
+        captchaImage.src = '/captcha/captcha?' + new Date().getTime();
+    });
+</script>
+</html>
