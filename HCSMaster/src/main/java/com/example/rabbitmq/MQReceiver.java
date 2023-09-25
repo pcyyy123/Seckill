@@ -16,10 +16,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * 消息消费者
- *
- * @author: LC
- * @date 2022/3/7 7:44 下午
- * @ClassName: MQReceiver
  */
 @Service
 @Slf4j

@@ -20,9 +20,6 @@ import java.util.Date;
 import java.util.List;
 /**
  * 生成用户工具类
- *
- * @author pcy
- * @since 1.0.0
  */
 public class UserUtil {
     private static void createUser(int count) throws Exception {

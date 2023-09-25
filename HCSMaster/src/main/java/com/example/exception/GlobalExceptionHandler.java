@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * 全局异常处理类
- *
- * @author: LC
- * @date 2022/3/2 5:33 下午
- * @ClassName: GlobalExceptionHandler
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {

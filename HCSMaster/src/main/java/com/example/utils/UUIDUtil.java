@@ -5,9 +5,6 @@ import java.util.UUID;
 
 /**
  * UUID工具类
- *
- * @author: pcy
- * @ClassName: UUIDUtil
  */
 public class UUIDUtil {
 
